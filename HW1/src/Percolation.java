@@ -72,9 +72,6 @@ public class Percolation implements Cloneable{
             checkList.add(check_node(i-1,j));
             checkList.add(check_node(i,j+1));
             checkList.add(check_node(i,j-1));
-//            StdOut.print(i+","+j+" : "+checkList+"\n");
-            //StdOut.print(checkList);
-            //StdOut.print(checkList.contains(0));
         }
         else{
             return false;
@@ -134,8 +131,6 @@ public class Percolation implements Cloneable{
             In br = new In(args[0]);
             String data = br.readLine();
             int N = Integer.parseInt(data);
-            //StdOut.print(N + "\n");
-            //String line;
             Percolation pr = new Percolation(N);
             ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
             list.add( new ArrayList<Integer>());
@@ -143,17 +138,13 @@ public class Percolation implements Cloneable{
             int count = 0;
             while (br.hasNextLine()) {
                 String vals = br.readLine();
-                //StdOut.print(vals);
-                //StdOut.print(vals.split(",")[0]+"," + vals.split(",")[1]+"\n");
                 int i = Integer.parseInt(vals.split(",")[0]);
                 int j = Integer.parseInt(vals.split(",")[1]);
                 list.get(0).add(i);
                 list.get(1).add(j);
                 pr.open_node(i, j);
             }
-//            StdOut.print(pr.UF.find(37));
             int ptsNumber = list.get(0).size();
-//            StdOut.print(pr.check_node(3,4));
             if (pr.isPercolated()) {
                 StdOut.print(0);
             }
@@ -181,6 +172,7 @@ public class Percolation implements Cloneable{
                         }
                 }
             }
+            // Fast find next open node
 //                outerloop:
 //                for(int i=1;i<=N;i++) {
 //                    for (int j = 1; j <= N; j++) {
