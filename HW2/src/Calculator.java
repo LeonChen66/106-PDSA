@@ -1,38 +1,44 @@
-import java.util.SplittableRandom;
-
+/*
+Create by Leon for PDSA
+HW2
+Arithmetic Calculator
+ */
 public class Calculator {
+    // Infix to Postfix Stack
     private Stack<String> stackString = new Stack<String>();
+    // Calculate Stack
     private Stack<Double> stackPostfix = new Stack<Double>();
 
-    private static String[] splitInfix(String infix){
+    // Split the input function
+    private String[] splitInfix(String infix){
         String[] temp = infix.split(" ");
         return temp;
     }
 
-    public static boolean operator(String xar){
+    public boolean operator(String xar){
         if( (xar.equals("+"))||(xar.equals("-"))||(xar.equals("/"))||(xar.equals("*")) )
             return  true;
         return false;
     }
 
-    public static boolean openParentheses(String xar){
+    public boolean openParentheses(String xar){
         if(xar.equals("("))
             return  true;
         return false;
     }
-    public static boolean closeParentheses(String xar){
+    public boolean closeParentheses(String xar){
         if(xar.equals(")"))
             return  true;
         return false;
     }
-    public static int priority(String op) {
+    public int priority(String op) {
         if (op.equals("+")||op.equals("-")) return 0;
         else if (op.equals("*")||op.equals("/")) return 1;
         else if (op.equals("(")||op.equals(")")) return -1;
         else throw new IllegalArgumentException("Operator unknown: " + op);
         }
 
-
+    // Infix to Postfix function
     private String toPostfix(String[] infix) {
         String Postfix = new String();
         for (String temp : infix) {
@@ -57,6 +63,8 @@ public class Calculator {
             }
             return Postfix;
     }
+
+    // Final Calculation and ans
     public Double ans(String e){
         String[] Infix = splitInfix(e);
         String Postfix = toPostfix(Infix);
@@ -94,11 +102,11 @@ public class Calculator {
         return stackPostfix.peek();
     }
     public static void main(String[] args) {
-        String input = "1 + 6 / 2 * ( 1 + 2 ) - 4 * ( 5 - 3 )";
+        String input = "( 1 + 2 ) * 3 - 6 / 3";
 //        String input = "1 + 1 * 3";
-        String[] temp = input.split(" ");
+//        String[] temp = input.split(" ");
         Calculator test = new Calculator();
-        String doit = test.toPostfix(temp);
+//        String doit = test.toPostfix(temp);
         StdOut.print(test.ans(input)+"\n");
 //        StdOut.print(test.toPostfix(temp));
 //        StdOut.print(temp[1]);
