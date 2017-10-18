@@ -1,0 +1,140 @@
+//public class Deque<Item> implements Iterable<Item>{
+//    private Object[] data;
+//    private int size;
+//    private int first;
+//    private int last;
+//
+//    public Deque(){// construct an empty deque
+//        data = new Object[10];  // initial size = 10
+//        size = 0;
+//        first = 0;
+//        last = 0;
+//    }
+//    public boolean isEmpty(){// is the deque empty?
+//        return (size==0);
+//    }
+//    public int size(){// return the number of items on the deque
+//        return size;
+//    }
+//    public void addFirst(Item item){// add the item to the front
+//        resize();
+//        if (item==null){
+//            throw new NullPointerException();
+//        }else{
+//            for (int i=size-1;i>=0;i--){
+//                data[i+1] = data[i];
+//            }
+//            data[0] = item;
+//            size++;
+////            resize();
+//        }
+//    }
+//    public void addLast(Item item){// add the item to the end
+//        resize();
+//        if (item==null){
+//            throw new NullPointerException();
+//        }else{
+//            data[size] = item;
+//            size++;
+//        }
+////        resize();
+//    }
+//    public Item peekFirst(){// return the item from the front, return null if the deque is empty.
+//        if(size==0){
+//            return null;
+//        }
+//        else {
+//            return (Item) data[0];
+//        }
+//    }
+//    public Item peekLast(){// return the item from the end, return null if the deque is empty.
+//        if(size==0){
+//            return null;
+//        }
+//        else {
+//            return (Item) data[size-1];
+//        }
+//    }
+//    public Item removeFirst(){// remove and return the item from the front
+//        resize();
+//        if(size==0){
+//            throw new NoSuchElementException();
+//        }else{
+//            Object temp = data[0];
+//            for(int i=0;i<size;i++){
+//                data[i] = data[i+1];
+//            }
+//            size--;
+////            resize();
+//            return (Item) temp;
+//        }
+//    }
+//    public Item removeLast(){// remove and return the item from the end
+//        resize();
+//        if(size==0){
+//            throw new NoSuchElementException();
+//        }else{
+//            Object temp = data[size-1];
+//            data[size-1] = null;
+//            size--;
+////            resize();
+//            return (Item) temp;
+//        }
+//    }
+//    private void resize(){
+//        if (size==data.length){
+//            Object[] data_new = new Object[2*data.length];
+//            for(int i=0;i<size;i++){
+//                data_new[i] = data[i];
+//            }
+//            data = data_new;
+//        }
+//        else if (size < data.length/4){
+//            Object[] data_new = new Object[data.length/2];
+//            for (int i=0;i<size;i++){
+//                data_new[i] = data[i];
+//            }
+//            data = data_new;
+//        }
+//    }
+//    @Override
+//    public Iterator<Item> iterator(){// return an iterator over items in order from front to end
+//        return new ArrayIterator();
+//    }
+//
+//    private class ArrayIterator implements Iterator<Item>{
+//        private int i = 0;
+//        @Override
+//        public boolean hasNext(){
+//            return i<size;
+//        }
+//        @Override
+//        public Item next(){
+//            if(hasNext()){
+//                return (Item) data[i++];
+//            }else{
+//                throw new NoSuchElementException();
+//            }
+//        }
+//        @Override
+//        public void remove(){
+//            throw new UnsupportedOperationException();
+//        }
+//    }
+//
+//    public static void main(String[] args){// you can test your code here; we won't execute your main function.
+////        Deque<Integer> deque = new Deque<>();
+////        for (int i=0;i<1000;i++){
+////            deque.addFirst(i);
+////        }
+////        deque.removeFirst();
+////        deque.removeLast();
+////        StdOut.print(deque.peekLast()+"\n");
+////        StdOut.print(deque.peekFirst()+"\n");
+////        StdOut.print(deque.size()+"\n");
+////        Iterator<Integer> i = deque.iterator();
+////        while(i.hasNext()){
+////            StdOut.print(i.next());
+////        }
+//    }
+//}
