@@ -1,0 +1,39 @@
+        In br = new In(args[0]);
+        int num = br.readInt();
+        Point2D[] points = new Point2D[num];
+        for(int i=0;i<num;i++) {
+            double temp_x = br.readDouble();
+            double temp_y = br.readDouble();
+            points[i] = new Point2D(temp_x,temp_y);
+            System.out.println(String.format("%d:(%.3f,%.3f)",i,points[i].x(),points[i].y()));
+        }
+
+        Point2D[] oriPoints = Arrays.copyOf(points,points.length);
+        ArrayList<Point2D> orgArray = new ArrayList<Point2D>();
+        for (Point2D p:oriPoints){
+            orgArray.add(p);
+        }
+        int[] index = ConvexHullVertex(points);
+        while (index.length > 2) {
+            //int nowLength = oriPoints.length;
+            ArrayList<Integer> index_array = new ArrayList<Integer>();
+            Collections.addAll(index_array, Arrays.stream(index).boxed().toArray(Integer[]::new));
+            //nowLength -= index.length;
+            ArrayList<Point2D> array = new ArrayList<Point2D>();
+            for (int i = 0; i < num; i++) {
+                if (!index_array.contains(i)) {
+                    array.add(oriPoints[i]);
+                }
+            }
+            Point2D[] temp = array.toArray(new Point2D[array.size()]);
+            int[] test = ConvexHullVertex(temp);
+
+            int count = 0;
+            int[] index_test = new int[test.length];
+            for (int i = 0; i < test.length; i++) {
+                index_test[i] = orgArray.indexOf(array.get(test[i]));
+            }
+            StdOut.println(Arrays.toString(temp));
+            StdOut.println(Arrays.toString(test));
+            StdOut.println(Arrays.toString(index_array.toArray()));
+            StdOut.println(Arrays.toString(index_test));
