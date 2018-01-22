@@ -1,0 +1,30 @@
+    public void Search_min() {
+//        Node a = new Node(1,1,10);
+//        Node b = new Node(1,1,14);
+//        StdOut.print(is_open(1,1));
+        int now_row = start[1] - 1;
+        int now_col = start[0] - 1;
+//        while(true){
+        for (int i = 0; i < 7; i++) {
+            if (now_col == goal[0] - 1 && now_row == goal[1] - 1) {
+                break;
+            }
+            check_min(now_col + 1, now_row, VH_length);
+            check_min(now_col - 1, now_row, VH_length);
+            check_min(now_col, now_row + 1, VH_length);
+            check_min(now_col, now_row - 1, VH_length);
+            check_min(now_col + 1, now_row + 1, Dia_length);
+            check_min(now_col + 1, now_row - 1, Dia_length);
+            check_min(now_col - 1, now_row - 1, Dia_length);
+            check_min(now_col - 1, now_row + 1, Dia_length);
+            Node min_now = priorQ.min();
+            StdOut.print(min_now.Nrow);
+            road_length += min_now.dis - map[min_now.Nrow][min_now.Ncol];
+            now_col = min_now.Ncol;
+            now_row = min_now.Nrow;
+//            StdOut.println(now_col +","+ now_row +":"+road_length);
+            matrix_open[min_now.Nrow][min_now.Ncol] = true;
+            MinPQ<Node> priorQ = new MinPQ<>(8);
+        }
+//        StdOut.print(map[5][4]);
+    }
