@@ -12,5 +12,4 @@ Chapter 6: Context highlights connections to systems programming, scientific com
  
 ### Course Material
 * Algorithms 
-
 By: Robert Sedgewick; Kevin Wayne 
