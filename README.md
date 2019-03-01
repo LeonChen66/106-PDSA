@@ -1,6 +1,6 @@
  # 106-PDSA
 
-## Practice of Data Structure and Algorithm 
+## Practice of Data Structure and Algorithm (NTU Courses)
 
 ### Course Discription
 Chapter 1: Fundamentals introduces a scientific and engineering basis for comparing algorithms and making predictions. It also            includes our programming model.  
